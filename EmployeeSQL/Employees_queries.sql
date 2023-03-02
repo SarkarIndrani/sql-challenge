@@ -2,7 +2,7 @@
 
 SELECT e.emp_no, e.last_name, e.first_name, e.sex, sal.salary
 FROM Employees As e
-JOIN Salaries As sal
+LEFT JOIN Salaries As sal
 ON e.emp_no = sal.emp_no;
 
 --2. List the first name, last name, and hire date for the employees who were hired in 1986.
@@ -16,9 +16,9 @@ WHERE date_part ('year', hire_date)='1986';
 
 SELECT d.dept_no, d,dept_name, e.emp_no, e.last_name, e.first_name
 FROM Departments AS d
-JOIN Department_Manager AS dm
+LEFT JOIN Department_Manager AS dm
 ON d.dept_no = dm.dept_no
-JOIN Employees AS e
+LEFT JOIN Employees AS e
 ON dm.emp_no = e.emp_no;
 
 --4. List the department number for each employee along with that employee’s 
@@ -67,5 +67,4 @@ SELECT last_name, COUNT(last_name) AS "last_name_frequency"
 FROM Employees
 GROUP BY last_name
 ORDER BY "last_name_frequency" DESC;
-
 
